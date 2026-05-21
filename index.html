@@ -819,6 +819,22 @@ const PROPS=[
 
 /* RENDER CARDS */
 const grid=document.getElementById('props-grid');
+async function loadAndRender(){
+  let PROPS_TO_USE=PROPS;
+  try{
+    const r=await fetch('/_data/properties.json');
+    if(r.ok){const d=await r.json();if(d.properties&&d.properties.length>0)PROPS_TO_USE=d.properties.map((p,i)=>({badge:p.badge||'FOR SALE',price:p.price,name:p.title,loc:p.location,beds:p.beds,baths:p.baths,sqft:p.sqft,img:p.image||((i%6+1)+'.jpg'),pid:'AP-'+String(i+1).padStart(4,'0'),desc:p.description,features:[]}));}
+  }catch(e){}
+  PROPS_TO_USE.forEach((p,i)=>{
+    const card=document.createElement('div');
+    card.className='prop-card fold-in d'+((i%6)+1);
+    card.innerHTML=`<div class="cc tl"></div><div class="cc tr"></div><div class="cc bl"></div><div class="cc br"></div><div class="scan-sw"></div><div class="prop-hud-bar"><span>◈ AURORAPRIME // VERIFIED</span><span><span class="prop-hud-dot"></span>LIVE</span></div><div class="prop-img"><img src="${p.img||p.image||((i%6+1)+'.jpg')}" alt="${p.name||p.title}" loading="lazy"><div class="prop-img-overlay"></div><span class="prop-badge">${p.badge}</span><span class="prop-sqft">${p.sqft} SQ FT</span></div><div class="prop-body"><div class="prop-price">${p.price}</div><div class="prop-id">ID: ${p.pid||'AP-'+String(i+1).padStart(4,'0')} · VERIFIED</div><div class="prop-loc"><svg viewBox="0 0 10 12"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 7 5 7s5-3.25 5-7c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>${p.loc||p.location}</div><div class="prop-name">${p.name||p.title}</div><div class="prop-meta"><div class="prop-mi"><span class="prop-mi-icon">⊡</span>${p.beds} BEDS</div><div class="prop-mi"><span class="prop-mi-icon">◎</span>${p.baths} BATH</div><div class="prop-mi"><span class="prop-mi-icon">◻</span>${p.sqft}</div></div><button class="prop-btn" data-idx="${i}">[ VIEW PROPERTY → ]</button></div>`;
+    grid.appendChild(card);
+    observer.observe(card);
+    applyTilt(card);
+  });
+}
+loadAndRender();
 PROPS.forEach((p,i)=>{
   const card=document.createElement('div');
   card.className='prop-card fold-in d'+((i%6)+1);

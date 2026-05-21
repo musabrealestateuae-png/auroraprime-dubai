@@ -3,29 +3,25 @@ backend:
   branch: main
 
 media_folder: "images"
+public_folder: "/images"
 
 collections:
   - name: "properties"
     label: "Properties"
-    folder: "_properties"
-    create: true
-    fields:
-      - {label: "Name", name: "title", widget: "string"}
-      - {label: "Price", name: "price", widget: "string"}
-      - {label: "Location", name: "location", widget: "string"}
-      - {label: "Beds", name: "beds", widget: "number"}
-      - {label: "Baths", name: "baths", widget: "number"}
-      - {label: "Sqft", name: "sqft", widget: "string"}
-      - {label: "Badge", name: "badge", widget: "string"}
-      - {label: "Image", name: "image", widget: "image"}
-      - {label: "Description", name: "description", widget: "text"}
-
-  - name: "blog"
-    label: "Blog Posts"
-    folder: "_posts"
-    create: true
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Cover Image", name: "image", widget: "image"}
-      - {label: "Body", name: "body", widget: "markdown"}
+    files:
+      - label: "All Properties"
+        name: "properties"
+        file: "_data/properties.json"
+        fields:
+          - label: "Properties"
+            name: "properties"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "title", widget: "string"}
+              - {label: "Price", name: "price", widget: "string"}
+              - {label: "Location", name: "location", widget: "string"}
+              - {label: "Beds", name: "beds", widget: "number"}
+              - {label: "Baths", name: "baths", widget: "number"}
+              - {label: "Sqft", name: "sqft", widget: "string"}
+              - {label: "Badge", name: "badge", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}

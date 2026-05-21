@@ -420,7 +420,7 @@
   async function load() {
     const id = new URLSearchParams(location.search).get('id');
     try {
-      const res = await fetch('/_data/properties.json');
+      const res = await fetch('/auroraprime-dubai/_data/properties.json');
       const raw = await res.json();
       const all = Array.isArray(raw) ? raw : (raw.properties || []);
       const p = id ? all.find(x => x.id === id) : all[0];

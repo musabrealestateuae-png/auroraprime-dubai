@@ -823,6 +823,13 @@ async function loadAndRender(){
   let PROPS_TO_USE=PROPS;
   try{
     const r=await fetch('/_data/properties.json');
+    if(r.ok){const d=await r.json();if(d.properties&&d.properties.length>0)PROPS_TO_USE=d.properties.map((p,i)=>({badge:p.badge||'FOR SALE',price:p.price,name:p.title,loc:p.location,beds:p.beds,baths:p.baths,sqft:p.sqft,img:(i%6+1)+'.jpg',pid:'AP-'+String(i+1).padStart(4,'0'),desc:p.description,features:[]}));}
+  }catch(e){}
+  PROPS_TO_USE.forEach((p,i)=>{
+async function loadAndRender(){
+  let PROPS_TO_USE=PROPS;
+  try{
+    const r=await fetch('/_data/properties.json');
     if(r.ok){const d=await r.json();if(d.properties&&d.properties.length>0)PROPS_TO_USE=d.properties.map((p,i)=>({badge:p.badge||'FOR SALE',price:p.price,name:p.title,loc:p.location,beds:p.beds,baths:p.baths,sqft:p.sqft,img:p.image||((i%6+1)+'.jpg'),pid:'AP-'+String(i+1).padStart(4,'0'),desc:p.description,features:[]}));}
   }catch(e){}
   PROPS_TO_USE.forEach((p,i)=>{
@@ -835,7 +842,7 @@ async function loadAndRender(){
   });
 }
 loadAndRender();
-PROPS.forEach((p,i)=>{
+PROPS_TO_USE.forEach((p,i)=>{
   const card=document.createElement('div');
   card.className='prop-card fold-in d'+((i%6)+1);
   card.innerHTML=`

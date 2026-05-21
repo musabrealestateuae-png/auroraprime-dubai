@@ -1,253 +1,630 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Property Detail — AuroraPrime Dubai</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#060b18;--navy-l:#0b1226;--gold:#C9A84C;--gold-l:#E8C96B;--gold-d:#956E1F;--cyan:#00D4FF;--neon:#00FFB3;--white:#fff;--gray:#8892A4;--mono:'Share Tech Mono',monospace;}
-html{scroll-behavior:smooth}
-body{font-family:'Outfit',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none;min-height:100vh}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:linear-gradient(to bottom,var(--gold-d),var(--cyan));border-radius:2px}
-body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.02) 2px,rgba(0,0,0,0.02) 4px)}
-#cur-dot,#cur-ring{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%)}
-#cur-dot{width:6px;height:6px;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
-#cur-ring{width:30px;height:30px;border:1px solid rgba(0,212,255,.5)}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 4rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(28px);background:rgba(6,11,24,.9);border-bottom:1px solid rgba(201,168,76,.15)}
-nav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.4),rgba(0,212,255,.3),transparent)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.06em}
-.nav-logo span{color:var(--white)}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
-.nav-links a{color:var(--gray);text-decoration:none;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;transition:color .3s;cursor:none}
-.nav-links a:hover{color:var(--cyan)}
-.nav-cta{background:transparent;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.1rem;border-radius:2px;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;cursor:none;transition:all .3s}
-.nav-cta:hover{background:var(--cyan);color:var(--navy)}
-/* HERO IMAGE */
-.hero-img{position:relative;height:65vh;min-height:420px;overflow:hidden;margin-top:70px}
-.hero-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(1.1)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,11,24,.95) 0%,rgba(6,11,24,.3) 50%,rgba(6,11,24,.4) 100%)}
-.hero-img::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,212,255,.01) 3px,rgba(0,212,255,.01) 4px);pointer-events:none}
-.hero-badges{position:absolute;top:2rem;left:2rem;display:flex;gap:.6rem;z-index:2}
-.hero-back{position:absolute;top:2rem;right:2rem;z-index:2;font-family:var(--mono);font-size:.65rem;color:var(--white);text-decoration:none;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.15);padding:.4rem .9rem;border-radius:2px;backdrop-filter:blur(8px);transition:all .3s;cursor:none;display:flex;align-items:center;gap:.4rem}
-.hero-back:hover{border-color:var(--cyan);color:var(--cyan)}
-.hero-content{position:absolute;bottom:2rem;left:2rem;right:2rem;z-index:2}
-.hero-price{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--gold);line-height:1;text-shadow:0 0 30px rgba(201,168,76,.3)}
-.hero-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;margin:.3rem 0}
-.hero-loc{font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.6);letter-spacing:.12em;display:flex;align-items:center;gap:.4rem}
-/* BADGE */
-.badge{font-family:var(--mono);font-size:.56rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.26rem .8rem;border-radius:3px}
-.badge-eoi{background:rgba(0,212,255,.15);color:var(--cyan);border:1px solid rgba(0,212,255,.4)}
-.badge-sale{background:rgba(0,255,179,.1);color:var(--neon);border:1px solid rgba(0,255,179,.3)}
-.badge-ready{background:rgba(0,255,179,.1);color:var(--neon);border:1px solid rgba(0,255,179,.3)}
-.badge-gold{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
-/* LAYOUT */
-.detail-layout{display:grid;grid-template-columns:1fr 360px;gap:2.5rem;padding:2.5rem 4rem 5rem;max-width:1400px;margin:0 auto}
-/* LEFT CONTENT */
-.content-section{margin-bottom:2.5rem}
-.section-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.28em;color:var(--cyan);text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
-.section-label::before{content:'';width:18px;height:1px;background:var(--cyan)}
-/* KEY FACTS */
-.key-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1.5rem;background:rgba(0,212,255,.03);border:1px solid rgba(0,212,255,.1);border-radius:4px}
-.key-fact{text-align:center}
-.key-fact-val{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--gold);display:block;line-height:1}
-.key-fact-lbl{font-family:var(--mono);font-size:.55rem;color:var(--gray);letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem}
-/* DESCRIPTION */
-.description{color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.95}
-/* UNIT TYPES TABLE */
-.units-table{width:100%;border-collapse:collapse}
-.units-table th{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;color:var(--cyan);text-transform:uppercase;padding:.7rem 1rem;border-bottom:1px solid rgba(0,212,255,.15);text-align:left;background:rgba(0,212,255,.03)}
-.units-table td{padding:.85rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);font-size:.84rem;color:var(--white)}
-.units-table tr:hover td{background:rgba(0,212,255,.03)}
-.units-table .price-cell{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold)}
-/* AMENITIES */
-.amenities-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
-.amenity{display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;background:rgba(0,212,255,.03);border:1px solid rgba(0,212,255,.08);border-radius:3px;font-size:.82rem;color:var(--gray);transition:all .3s}
-.amenity:hover{border-color:rgba(0,212,255,.25);color:var(--white)}
-.amenity::before{content:'◈';color:var(--cyan);font-size:.55rem;flex-shrink:0}
-/* PDF */
-.pdf-link{display:inline-flex;align-items:center;gap:.8rem;padding:1rem 1.5rem;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.25);border-radius:4px;color:var(--gold);text-decoration:none;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;cursor:none}
-.pdf-link:hover{background:rgba(201,168,76,.12);border-color:var(--gold)}
-.pdf-icon{width:36px;height:36px;background:rgba(201,168,76,.15);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.9rem}
-/* SIDEBAR */
-.sidebar{position:sticky;top:90px;height:fit-content}
-.sidebar-card{background:rgba(2,8,20,.8);border:1px solid rgba(0,212,255,.15);border-radius:6px;padding:1.8rem;margin-bottom:1.2rem;position:relative}
-.sidebar-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(0,212,255,.3),transparent)}
-.sidebar-price{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold);text-shadow:0 0 20px rgba(201,168,76,.25);margin-bottom:.2rem}
-.sidebar-price-label{font-family:var(--mono);font-size:.52rem;color:var(--gray);letter-spacing:.12em;margin-bottom:1.2rem}
-.sidebar-row{display:flex;justify-content:space-between;align-items:center;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
-.sidebar-row:last-child{border-bottom:none}
-.sidebar-row-label{font-family:var(--mono);font-size:.6rem;color:var(--gray);letter-spacing:.1em}
-.sidebar-row-val{font-family:var(--mono);font-size:.65rem;color:var(--white);letter-spacing:.08em}
-.sidebar-row-val.gold{color:var(--gold)}
-.sidebar-row-val.cyan{color:var(--cyan)}
-/* CTAs */
-.cta-btn{width:100%;padding:.95rem;border:none;border-radius:4px;font-family:var(--mono);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:none;transition:all .3s;margin-bottom:.7rem;display:flex;align-items:center;justify-content:center;gap:.6rem}
-.cta-primary{background:linear-gradient(135deg,var(--gold-d),var(--gold));color:var(--navy)}
-.cta-primary:hover{box-shadow:0 0 20px rgba(201,168,76,.4)}
-.cta-secondary{background:transparent;color:var(--cyan);border:1px solid rgba(0,212,255,.35)}
-.cta-secondary:hover{background:rgba(0,212,255,.06);border-color:var(--cyan)}
-.cta-note{font-family:var(--mono);font-size:.55rem;color:var(--gray);text-align:center;letter-spacing:.08em;opacity:.6;margin-top:.5rem}
-/* LOADING */
-.loading{text-align:center;padding:8rem 2rem;color:var(--gray)}
-.loading h2{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:.5rem}
-/* FOOTER */
-footer{background:#020508;padding:2rem 4rem;border-top:1px solid rgba(0,212,255,.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-footer p{color:var(--gray);font-family:var(--mono);font-size:.65rem;letter-spacing:.08em}
-footer span{color:var(--cyan)}
-@media(max-width:1024px){.detail-layout{grid-template-columns:1fr}.sidebar{position:static}.key-facts{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){nav{padding:.85rem 1.5rem}.nav-links{display:none}.detail-layout{padding:1.5rem 1.5rem 4rem}.amenities-grid{grid-template-columns:1fr}.key-facts{grid-template-columns:repeat(2,1fr)}footer{padding:1.5rem}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property — AuroraPrime Dubai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #060b18; --navy2: #0a1020; --navy3: #0e1628; --navy4: #111a2e;
+      --gold: #C9A84C; --gold2: #e8c96a; --cyan: #00D4FF; --cyan2: #00a8cc;
+      --gray: #8892A4; --white: #e8eaf0;
+      --mono: 'Share Tech Mono', monospace;
+      --serif: 'Cormorant Garamond', serif;
+      --body: 'Outfit', sans-serif;
+      --radius: 10px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--white); font-family: var(--body); font-size: 15px; line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 68px; padding: 0 40px;
+      background: rgba(6,11,24,0.96); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 1.45rem; color: var(--gold); letter-spacing: 3px; text-decoration: none; }
+    .nav-back {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--gray); font-family: var(--mono); font-size: 0.78rem;
+      text-decoration: none; transition: color .2s;
+    }
+    .nav-back:hover { color: var(--cyan); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* ── GALLERY ── */
+    .gallery { position: relative; margin-top: 68px; height: 540px; overflow: hidden; background: var(--navy2); }
+    .gallery-main { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .3s; }
+    .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 55%, rgba(6,11,24,0.85)); pointer-events: none; }
+    .gallery-badges { position: absolute; top: 28px; left: 28px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .gbadge {
+      padding: 5px 14px; border-radius: 4px;
+      font-family: var(--mono); font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .gbadge-eoi   { background: rgba(0,212,255,.12); border: 1px solid rgba(0,212,255,.5); color: var(--cyan); }
+    .gbadge-sale  { background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.5); color: var(--gold); }
+    .gbadge-off   { background: rgba(138,43,226,.15); border: 1px solid rgba(138,43,226,.5); color: #bf8fff; }
+    .gbadge-ready { background: rgba(0,200,100,.12); border: 1px solid rgba(0,200,100,.4); color: #00c864; }
+    .gbadge-date  { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.25); color: var(--white); }
+    .gallery-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 46px; height: 46px; border-radius: 50%;
+      background: rgba(6,11,24,.75); border: 1px solid rgba(255,255,255,.2);
+      color: white; cursor: pointer; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center; transition: all .2s;
+    }
+    .gallery-nav:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+    .gallery-prev { left: 20px; } .gallery-next { right: 20px; }
+    .gallery-bottom { position: absolute; bottom: 22px; left: 28px; right: 28px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .gallery-controls { display: flex; gap: 10px; }
+    .gctrl {
+      display: flex; align-items: center; gap: 7px;
+      padding: 7px 14px; background: rgba(6,11,24,.8); border: 1px solid rgba(255,255,255,.15);
+      color: var(--white); border-radius: 6px; font-family: var(--mono); font-size: 0.75rem;
+      text-decoration: none; cursor: pointer; transition: all .2s;
+    }
+    .gctrl:hover { border-color: var(--gold); color: var(--gold); }
+    .gallery-thumbs { display: flex; gap: 8px; }
+    .gthumb { width: 64px; height: 46px; border-radius: 5px; object-fit: cover; cursor: pointer; border: 2px solid transparent; opacity: .55; transition: all .2s; }
+    .gthumb:hover, .gthumb.active { opacity: 1; border-color: var(--gold); }
+
+    /* ── PAGE LAYOUT ── */
+    .page { max-width: 1340px; margin: 0 auto; padding: 0 28px; }
+    .layout { display: grid; grid-template-columns: 1fr 390px; gap: 48px; padding: 52px 0; }
+
+    /* ── SECTION HEADINGS ── */
+    .sec-title {
+      font-family: var(--serif); font-size: 1.55rem; color: var(--white);
+      padding-bottom: 14px; margin-bottom: 26px;
+      border-bottom: 1px solid rgba(201,168,76,.18);
+    }
+    .sec-title em { color: var(--gold); font-style: normal; }
+    section { margin-bottom: 52px; }
+
+    /* ── DESCRIPTION ── */
+    .desc-text { color: var(--gray); line-height: 1.85; font-size: 0.93rem; }
+    .desc-more { display: none; }
+    .read-more { background: none; border: none; color: var(--cyan); font-family: var(--body); font-size: 0.88rem; cursor: pointer; margin-top: 10px; }
+
+    /* ── DETAILS TABLE ── */
+    .details-table {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); overflow: hidden;
+      gap: 1px; background: rgba(255,255,255,.04);
+    }
+    .dt-label { padding: 13px 18px; background: var(--navy2); color: var(--gray); font-family: var(--mono); font-size: 0.75rem; letter-spacing: .4px; }
+    .dt-value { padding: 13px 18px; background: var(--navy2); color: var(--white); font-size: 0.88rem; font-weight: 500; }
+    .dt-value b { color: var(--gold); font-weight: 600; }
+
+    /* ── UNITS TABLE ── */
+    .unit-accordion { border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; }
+    .unit-head {
+      display: grid; grid-template-columns: 2.2fr 1fr 1.4fr 2fr 36px;
+      align-items: center; padding: 16px 20px;
+      background: var(--navy3); cursor: pointer; transition: background .2s;
+    }
+    .unit-head:hover { background: rgba(201,168,76,.05); }
+    .uh-type { font-family: var(--serif); font-size: 1.08rem; }
+    .uh-count { color: var(--cyan); font-family: var(--mono); font-size: 0.8rem; }
+    .uh-sqft { color: var(--gray); font-size: 0.85rem; }
+    .uh-price { font-family: var(--mono); font-size: 0.88rem; color: var(--gold); }
+    .uh-chevron { color: var(--gray); font-size: 1rem; transition: transform .2s; text-align: center; }
+    .uh-chevron.open { transform: rotate(180deg); }
+    .unit-body { display: none; background: var(--navy2); padding: 16px 20px; }
+    .unit-body.open { display: block; }
+    .unit-cols { display: grid; grid-template-columns: 70px repeat(5, 1fr); gap: 8px; }
+    .unit-col-head { color: var(--gray); font-family: var(--mono); font-size: 0.7rem; letter-spacing: .5px; text-transform: uppercase; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .unit-data-row { display: contents; }
+    .unit-data-row > span { padding: 9px 0; font-size: 0.83rem; color: var(--white); border-bottom: 1px solid rgba(255,255,255,.04); }
+    .unit-data-row > span.gprice { color: var(--gold); font-family: var(--mono); }
+    .unit-plan-box { width: 58px; height: 44px; background: rgba(255,255,255,.04); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: var(--gray); text-align: center; border: 1px dashed rgba(255,255,255,.1); }
+
+    /* ── PAYMENT PLAN ── */
+    .pp-bar { display: flex; height: 8px; border-radius: 8px; overflow: hidden; margin: 20px 0 24px; }
+    .pp-seg { transition: width .6s; }
+    .pp-steps { display: grid; gap: 10px; }
+    .pp-step {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 20px; background: var(--navy3); border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .pp-label { font-size: 0.93rem; }
+    .pp-note { font-size: 0.78rem; color: var(--gray); margin-top: 2px; }
+    .pp-pct { font-family: var(--mono); font-size: 1.4rem; color: var(--gold); }
+
+    /* ── AMENITIES ── */
+    .amenity-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 24px; }
+    .amenity-tag {
+      padding: 7px 15px; background: rgba(0,212,255,.06);
+      border: 1px solid rgba(0,212,255,.2); border-radius: 20px;
+      font-family: var(--mono); font-size: 0.78rem; color: var(--cyan);
+    }
+    .amenity-photos { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .aph { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/3; background: var(--navy3); }
+    .aph img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+    .aph:hover img { transform: scale(1.05); }
+    .aph-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 12px; background: linear-gradient(transparent, rgba(0,0,0,.75)); font-size: 0.8rem; }
+
+    /* ── MAP ── */
+    .map-box { height: 340px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); background: var(--navy3); position: relative; }
+    .map-box iframe { width: 100%; height: 100%; border: none; }
+    .map-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 12px; }
+    .map-placeholder .pin { font-size: 2.5rem; }
+    .map-placeholder span { font-family: var(--mono); font-size: 0.82rem; color: var(--gray); }
+
+    /* ── DOCUMENTS ── */
+    .doc-cards { display: flex; flex-wrap: wrap; gap: 12px; }
+    .doc-card {
+      display: flex; align-items: center; gap: 14px;
+      padding: 15px 22px; background: var(--navy3);
+      border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius);
+      text-decoration: none; color: var(--white); transition: all .2s;
+    }
+    .doc-card:hover { border-color: var(--gold); }
+    .doc-icon { width: 38px; height: 38px; background: rgba(220,50,50,.12); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.65rem; color: #ff7b7b; font-weight: bold; flex-shrink: 0; }
+    .doc-name { font-size: 0.88rem; }
+    .doc-open { color: var(--cyan); font-size: 0.75rem; font-family: var(--mono); margin-top: 2px; }
+
+    /* ── FEATURES / PARKING ── */
+    .features-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .feature-chip {
+      display: flex; align-items: center; gap: 10px;
+      padding: 11px 16px; background: var(--navy3); border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.06); font-size: 0.84rem; color: var(--gray);
+    }
+    .feature-chip::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {}
+    .sidebar-card {
+      position: sticky; top: 88px;
+      background: var(--navy2); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px; padding: 28px;
+    }
+    .sb-loc { font-family: var(--mono); font-size: 0.73rem; color: var(--cyan); display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+    .sb-title { font-family: var(--serif); font-size: 2.1rem; line-height: 1.15; margin-bottom: 26px; }
+    .sb-stats { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+    .sb-stat {
+      display: flex; align-items: center; gap: 12px;
+      padding: 13px 15px; background: var(--navy3); border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.05);
+    }
+    .sb-stat-icon { width: 34px; height: 34px; border-radius: 7px; background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.2); display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
+    .sb-stat-label { font-size: 0.7rem; color: var(--gray); font-family: var(--mono); letter-spacing: .4px; }
+    .sb-stat-val { font-family: var(--mono); font-size: 0.9rem; margin-top: 2px; }
+    .sb-stat-val.gold { color: var(--gold); font-size: 1.05rem; }
+    .sb-divider { border: none; border-top: 1px solid rgba(255,255,255,.06); margin: 20px 0; }
+    .cta {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      width: 100%; padding: 14px; border-radius: 9px; font-size: 0.9rem;
+      font-family: var(--body); cursor: pointer; border: none; margin-bottom: 10px;
+      text-decoration: none; transition: all .2s; font-weight: 500;
+    }
+    .cta-gold { background: var(--gold); color: var(--navy); }
+    .cta-gold:hover { background: var(--gold2); }
+    .cta-outline { background: transparent; border: 1px solid rgba(255,255,255,.14); color: var(--white); }
+    .cta-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+    .cta-wa { background: rgba(37,211,102,.09); border: 1px solid rgba(37,211,102,.3); color: #25d366; }
+    .cta-wa:hover { background: rgba(37,211,102,.18); }
+
+    /* ── RECOMMENDED ── */
+    .rec-section { padding: 8px 0 80px; border-top: 1px solid rgba(255,255,255,.05); }
+    .rec-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-top: 28px; }
+    .rec-card { background: var(--navy2); border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(255,255,255,.06); text-decoration: none; color: inherit; display: block; transition: all .25s; }
+    .rec-card:hover { border-color: rgba(201,168,76,.35); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.4); }
+    .rec-img { width: 100%; height: 168px; object-fit: cover; background: var(--navy3); display: block; }
+    .rec-body { padding: 14px; }
+    .rec-badges { display: flex; gap: 6px; margin-bottom: 9px; flex-wrap: wrap; }
+    .rec-badge { font-family: var(--mono); font-size: 0.65rem; padding: 3px 8px; border-radius: 3px; }
+    .rec-badge.s { background: rgba(0,212,255,.1); border: 1px solid rgba(0,212,255,.2); color: var(--cyan); }
+    .rec-badge.d { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); color: var(--gray); }
+    .rec-title { font-family: var(--serif); font-size: 1.02rem; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .rec-dev { font-size: 0.76rem; color: var(--gray); margin-bottom: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .rec-foot { display: flex; justify-content: space-between; align-items: flex-end; }
+    .rec-pl { font-size: 0.68rem; color: var(--gray); }
+    .rec-price { font-family: var(--mono); font-size: 0.82rem; color: var(--gold); }
+    .rec-pplan { font-family: var(--mono); font-size: 0.75rem; text-align: right; }
+
+    /* ── LOADING ── */
+    #loading { display: flex; align-items: center; justify-content: center; min-height: 60vh; font-family: var(--mono); color: var(--gray); font-size: 0.85rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar-card { position: static; }
+      .rec-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 700px) {
+      nav { padding: 0 16px; }
+      .gallery { height: 290px; }
+      .page { padding: 0 16px; }
+      .layout { gap: 28px; padding: 28px 0; }
+      .unit-head { grid-template-columns: 2fr 1fr 36px; }
+      .uh-sqft, .uh-price { display: none; }
+      .amenity-photos { grid-template-columns: repeat(2,1fr); }
+      .rec-grid { grid-template-columns: 1fr; }
+      .details-table { grid-template-columns: 1fr; }
+      .gallery-thumbs { display: none; }
+    }
+  </style>
 </head>
 <body>
-<div id="cur-dot"></div>
-<div id="cur-ring"></div>
 
+<!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">Aurora<span>Prime</span></a>
-  <ul class="nav-links">
-    <li><a href="properties.html">Properties</a></li>
-    <li><a href="index.html#how">Process</a></li>
-    <li><a href="index.html#testimonials">Clients</a></li>
-    <li><a href="index.html#cta">Contact</a></li>
-  </ul>
-  <button class="nav-cta">[ LIST PROPERTY ]</button>
+  <a href="/" class="nav-logo">AuroraPrime</a>
+  <a href="/properties.html" class="nav-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    All Properties
+  </a>
 </nav>
 
-<div id="page-content"><div class="loading"><h2>Loading Property…</h2><p>Fetching data…</p></div></div>
+<!-- LOADING -->
+<div id="loading">Loading property…</div>
 
-<footer>
-  <p>© 2024 <span>AURORAPRIME</span>. ALL RIGHTS RESERVED.</p>
-  <p>CRAFTED FOR DISTINCTION <span>◈</span> BUILT FOR THE EXTRAORDINARY</p>
-</footer>
+<!-- CONTENT -->
+<div id="content" style="display:none;">
 
-<script>
-/* CURSOR */
-const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
-let rx=0,ry=0;
-document.addEventListener('mousemove',e=>{dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px';});
-(function loop(){requestAnimationFrame(loop);rx+=(parseFloat(dot.style.left||0)-rx)*.12;ry+=(parseFloat(dot.style.top||0)-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';})();
-
-function badgeClass(status){
-  const m={'EOI':'badge-eoi','On Sale':'badge-sale','Ready':'badge-ready','Coming Soon':'badge-gold','Sold Out':'badge-gold'};
-  return m[status]||'badge-gold';
-}
-
-function badgeClass2(badge){return badge==='For Sale'?'badge-sale':'badge-gold';}
-
-async function init(){
-  const params=new URLSearchParams(window.location.search);
-  const id=params.get('id');
-  if(!id){document.getElementById('page-content').innerHTML='<div class="loading"><h2>No Property Selected</h2><p><a href="properties.html" style="color:var(--cyan)">← Back to Properties</a></p></div>';return;}
-
-  let props=[];
-  try{
-    const r=await fetch('/_data/properties.json');
-    if(r.ok){const d=await r.json();if(d.properties)props=d.properties;}
-  }catch(e){}
-
-  const p=props.find(x=>x.id===id);
-  if(!p){document.getElementById('page-content').innerHTML='<div class="loading"><h2>Property Not Found</h2><p><a href="properties.html" style="color:var(--cyan)">← Back to Properties</a></p></div>';return;}
-
-  document.title=p.title+' — AuroraPrime Dubai';
-
-  const amenitiesHTML=(p.amenities||[]).map(a=>`<div class="amenity">${a}</div>`).join('');
-  const unitsHTML=p.unit_types&&p.unit_types.length?`
-    <table class="units-table">
-      <thead><tr><th>Type</th><th>Beds</th><th>Sqft</th><th>Price (AED)</th></tr></thead>
-      <tbody>${p.unit_types.map(u=>`<tr><td>${u.type}</td><td>${u.beds||'—'}</td><td>${u.sqft}</td><td class="price-cell">${u.price}</td></tr>`).join('')}</tbody>
-    </table>`:'<p style="color:var(--gray);font-size:.85rem">Unit details coming soon.</p>';
-
-  const pdfHTML=p.floorplan_pdf?`
-    <a href="${p.floorplan_pdf}" target="_blank" class="pdf-link">
-      <div class="pdf-icon">📄</div>
-      <span>DOWNLOAD FLOOR PLAN PDF</span>
-    </a>`:'<p style="color:var(--gray);font-size:.82rem;font-family:var(--mono)">Floor plan available on request.</p>';
-
-  document.getElementById('page-content').innerHTML=`
-    <!-- HERO -->
-    <div class="hero-img">
-      <img src="${p.image||'1.jpg'}" alt="${p.title}">
-      <div class="hero-overlay"></div>
-      <div class="hero-badges">
-        <span class="badge ${badgeClass(p.status)}">${p.status}</span>
-        ${p.handover&&p.handover!=='Ready'?`<span class="badge badge-gold">${p.handover}</span>`:''}
-        <span class="badge ${badgeClass2(p.badge)}">${p.badge}</span>
+  <!-- GALLERY -->
+  <div class="gallery" id="gallery">
+    <img id="gmain" class="gallery-main" src="" alt="">
+    <div class="gallery-overlay"></div>
+    <div class="gallery-badges" id="gbadges"></div>
+    <button class="gallery-nav gallery-prev" onclick="gPrev()">&#8592;</button>
+    <button class="gallery-nav gallery-next" onclick="gNext()">&#8594;</button>
+    <div class="gallery-bottom">
+      <div class="gallery-controls">
+        <span class="gctrl">📷 <span id="gcount">1</span></span>
+        <a href="#map-sec" class="gctrl">📍 Map</a>
+        <a href="#" class="gctrl" id="brochure-btn" style="display:none;" target="_blank">📄 Brochure</a>
       </div>
-      <a href="properties.html" class="hero-back">← ALL PROPERTIES</a>
-      <div class="hero-content">
-        <div class="hero-price">AED ${p.price}</div>
-        <div class="hero-name">${p.title}</div>
-        <div class="hero-loc">
-          <svg width="9" height="11" viewBox="0 0 10 12" fill="var(--cyan)"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 7 5 7s5-3.25 5-7c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
-          ${p.location}
-        </div>
-      </div>
+      <div class="gallery-thumbs" id="gthumbs"></div>
     </div>
+  </div>
 
-    <!-- DETAIL LAYOUT -->
-    <div class="detail-layout">
-      <!-- LEFT -->
+  <div class="page">
+    <div class="layout">
+
+      <!-- LEFT COLUMN -->
       <div>
-        <!-- KEY FACTS -->
-        <div class="content-section">
-          <div class="key-facts">
-            <div class="key-fact"><span class="key-fact-val">${p.beds}</span><div class="key-fact-lbl">Bedrooms</div></div>
-            <div class="key-fact"><span class="key-fact-val">${p.baths}</span><div class="key-fact-lbl">Bathrooms</div></div>
-            <div class="key-fact"><span class="key-fact-val">${p.sqft}</span><div class="key-fact-lbl">Sq Feet</div></div>
-            <div class="key-fact"><span class="key-fact-val" style="font-size:1.2rem">${p.handover}</span><div class="key-fact-lbl">Handover</div></div>
-          </div>
-        </div>
 
         <!-- DESCRIPTION -->
-        <div class="content-section">
-          <div class="section-label">// ABOUT THIS PROPERTY</div>
-          <p class="description">${p.description||'Full description coming soon.'}</p>
-        </div>
+        <section>
+          <h2 class="sec-title">Description</h2>
+          <p class="desc-text" id="desc-short"></p>
+          <p class="desc-text desc-more" id="desc-full"></p>
+          <button class="read-more" id="rm-btn" onclick="toggleDesc()">Read More ▼</button>
+        </section>
 
-        <!-- UNIT TYPES -->
-        <div class="content-section">
-          <div class="section-label">// UNITS & AVAILABILITY</div>
-          ${unitsHTML}
-        </div>
+        <!-- UNITS & AVAILABILITY -->
+        <section id="units-sec">
+          <h2 class="sec-title">Units &amp; <em>Availability</em></h2>
+          <div id="units-list"></div>
+        </section>
+
+        <!-- PROJECT DETAILS -->
+        <section>
+          <h2 class="sec-title">Project <em>Details</em></h2>
+          <div class="details-table" id="details-table"></div>
+        </section>
+
+        <!-- PAYMENT PLAN -->
+        <section id="pp-sec">
+          <h2 class="sec-title">Payment <em>Plan</em></h2>
+          <div class="pp-bar" id="pp-bar"></div>
+          <div class="pp-steps" id="pp-steps"></div>
+        </section>
 
         <!-- AMENITIES -->
-        ${p.amenities&&p.amenities.length?`
-        <div class="content-section">
-          <div class="section-label">// FEATURES & AMENITIES</div>
-          <div class="amenities-grid">${amenitiesHTML}</div>
-        </div>`:''}
+        <section id="amen-sec">
+          <h2 class="sec-title">Features &amp; <em>Amenities</em></h2>
+          <div class="amenity-tags" id="amen-tags"></div>
+          <div class="amenity-photos" id="amen-photos"></div>
+        </section>
 
-        <!-- FLOOR PLAN -->
-        <div class="content-section">
-          <div class="section-label">// FLOOR PLAN</div>
-          ${pdfHTML}
-        </div>
+        <!-- MAP -->
+        <section id="map-sec">
+          <h2 class="sec-title">General <em>Plan</em></h2>
+          <div class="map-box" id="map-box">
+            <div class="map-placeholder">
+              <span class="pin">📍</span>
+              <span id="map-loc"></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- DOCUMENTS -->
+        <section id="docs-sec">
+          <h2 class="sec-title">Documents &amp; <em>Links</em></h2>
+          <div class="doc-cards" id="docs-list"></div>
+        </section>
+
+        <!-- FEATURES -->
+        <section id="feat-sec">
+          <h2 class="sec-title">Additional <em>Features</em></h2>
+          <div class="features-grid" id="feat-grid"></div>
+        </section>
+
       </div>
 
       <!-- SIDEBAR -->
       <div class="sidebar">
         <div class="sidebar-card">
-          <div class="sidebar-price">AED ${p.price}</div>
-          <div class="sidebar-price-label">PRICE FROM · ${p.currency}</div>
-          <div class="sidebar-row"><span class="sidebar-row-label">DEVELOPER</span><span class="sidebar-row-val">${p.developer}</span></div>
-          <div class="sidebar-row"><span class="sidebar-row-label">LOCATION</span><span class="sidebar-row-val">${p.location}</span></div>
-          <div class="sidebar-row"><span class="sidebar-row-label">PAYMENT PLAN</span><span class="sidebar-row-val gold">${p.payment_plan}</span></div>
-          <div class="sidebar-row"><span class="sidebar-row-label">HANDOVER</span><span class="sidebar-row-val cyan">${p.handover}</span></div>
-          <div class="sidebar-row"><span class="sidebar-row-label">STATUS</span><span class="sidebar-row-val">${p.status}</span></div>
-          ${p.price_per_sqft?`<div class="sidebar-row"><span class="sidebar-row-label">PRICE / SQFT</span><span class="sidebar-row-val">AED ${p.price_per_sqft}</span></div>`:''}
+          <div class="sb-loc">📍 <span id="sb-loc"></span></div>
+          <div class="sb-title" id="sb-title"></div>
+          <div class="sb-stats" id="sb-stats"></div>
+          <hr class="sb-divider">
+          <a class="cta cta-gold" id="wa-btn" href="https://wa.me/971000000000" target="_blank">💬 WhatsApp</a>
+          <button class="cta cta-outline" onclick="window.print()">↗ Share / Export</button>
+          <button class="cta cta-outline" onclick="alert('Sales offer coming soon!')">⚡ Generate Sales Offer</button>
         </div>
-
-        <button class="cta-btn cta-primary">◈ SCHEDULE PRIVATE TOUR</button>
-        <button class="cta-btn cta-secondary">⤓ REQUEST BROCHURE</button>
-        <div class="cta-note">★ COMPLIMENTARY CONSULTATION · ABSOLUTE DISCRETION</div>
       </div>
+
     </div>
-  `;
-}
-init();
+
+    <!-- RECOMMENDED -->
+    <div class="rec-section">
+      <h2 class="sec-title">Recommended <em>Projects</em></h2>
+      <div class="rec-grid" id="rec-grid"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ─── Gallery state ───────────────────────────────────────────
+  let imgs = [], gi = 0;
+  function gPrev() { gi = (gi - 1 + imgs.length) % imgs.length; gUpdate(); }
+  function gNext() { gi = (gi + 1) % imgs.length; gUpdate(); }
+  function gSet(i) { gi = i; gUpdate(); }
+  function gUpdate() {
+    document.getElementById('gmain').src = imgs[gi];
+    document.querySelectorAll('.gthumb').forEach((t, i) => t.classList.toggle('active', i === gi));
+  }
+
+  // ─── Desc toggle ──────────────────────────────────────────────
+  function toggleDesc() {
+    const el = document.getElementById('desc-full');
+    const btn = document.getElementById('rm-btn');
+    const show = el.style.display !== 'block';
+    el.style.display = show ? 'block' : 'none';
+    btn.textContent = show ? 'Show Less ▲' : 'Read More ▼';
+  }
+
+  // ─── Unit accordion ───────────────────────────────────────────
+  function toggleUnit(i) {
+    const body = document.getElementById('ub-' + i);
+    const chev = document.getElementById('uc-' + i);
+    const open = body.classList.toggle('open');
+    chev.classList.toggle('open', open);
+  }
+
+  // ─── Badge class helper ───────────────────────────────────────
+  function badgeClass(txt) {
+    const t = (txt || '').toLowerCase();
+    if (t === 'eoi' || t === 'coming soon') return 'gbadge gbadge-eoi';
+    if (t === 'on sale' || t === 'for sale') return 'gbadge gbadge-sale';
+    if (t === 'off-plan') return 'gbadge gbadge-off';
+    if (t === 'ready') return 'gbadge gbadge-ready';
+    return 'gbadge gbadge-date';
+  }
+
+  const PP_COLORS = ['#C9A84C', '#00D4FF', 'rgba(138,43,226,.75)', '#25d366', '#ff6b6b'];
+
+  // ─── Main load ────────────────────────────────────────────────
+  async function load() {
+    const id = new URLSearchParams(location.search).get('id');
+    try {
+      const res = await fetch('/_data/properties.json');
+      const raw = await res.json();
+      const all = Array.isArray(raw) ? raw : (raw.properties || []);
+      const p = id ? all.find(x => x.id === id) : all[0];
+      if (!p) { document.getElementById('loading').textContent = 'Property not found.'; return; }
+
+      document.title = (p.title || 'Property') + ' — AuroraPrime Dubai';
+
+      // Gallery
+      imgs = (p.gallery && p.gallery.length) ? p.gallery : [p.image || '1.jpg'];
+      document.getElementById('gmain').src = imgs[0];
+      document.getElementById('gcount').textContent = imgs.length;
+      const thumbsEl = document.getElementById('gthumbs');
+      if (imgs.length > 1) {
+        imgs.slice(0, 6).forEach((src, i) => {
+          const t = document.createElement('img');
+          t.className = 'gthumb' + (i === 0 ? ' active' : '');
+          t.src = src; t.alt = '';
+          t.onclick = () => gSet(i);
+          thumbsEl.appendChild(t);
+        });
+      }
+
+      // Badges
+      const bd = document.getElementById('gbadges');
+      [p.status, p.handover !== 'Ready' ? p.handover : null, p.badge].forEach(b => {
+        if (!b) return;
+        const s = document.createElement('span');
+        s.className = badgeClass(b); s.textContent = b;
+        bd.appendChild(s);
+      });
+
+      // Brochure
+      const bUrl = p.brochure_url || p.floorplan_pdf;
+      if (bUrl) { const bb = document.getElementById('brochure-btn'); bb.href = bUrl; bb.style.display = 'flex'; }
+
+      // Sidebar
+      document.getElementById('sb-loc').textContent = p.location || '';
+      document.getElementById('sb-title').textContent = p.title || '';
+      const statsData = [
+        { icon: '🏷️', lbl: 'PRICE FROM', val: (p.currency||'AED') + ' ' + (p.price||''), gold: true },
+        { icon: '🏢', lbl: 'UNITS IN SALE', val: p.units_in_sale ? p.units_in_sale + ' Units in sale' : '' },
+        { icon: '📋', lbl: 'PAYMENT PLAN', val: p.payment_plan || '' },
+        { icon: '🏗️', lbl: 'DEVELOPER', val: p.developer || '' },
+      ];
+      const sbStats = document.getElementById('sb-stats');
+      statsData.forEach(s => {
+        if (!s.val) return;
+        const d = document.createElement('div'); d.className = 'sb-stat';
+        d.innerHTML = `<div class="sb-stat-icon">${s.icon}</div><div><div class="sb-stat-label">${s.lbl}</div><div class="sb-stat-val${s.gold?' gold':''}">${s.val}</div></div>`;
+        sbStats.appendChild(d);
+      });
+
+      // WhatsApp number
+      if (p.whatsapp) document.getElementById('wa-btn').href = 'https://wa.me/' + p.whatsapp.replace(/\D/g,'');
+
+      // Description
+      const desc = p.description || '';
+      const words = desc.split(' ');
+      document.getElementById('desc-short').textContent = words.slice(0, 65).join(' ') + (words.length > 65 ? '…' : '');
+      if (words.length > 65) { document.getElementById('desc-full').textContent = desc; }
+      else { document.getElementById('rm-btn').style.display = 'none'; }
+
+      // Units
+      if (p.unit_types && p.unit_types.length) {
+        const ul = document.getElementById('units-list');
+        p.unit_types.forEach((u, i) => {
+          const d = document.createElement('div'); d.className = 'unit-accordion';
+          d.innerHTML = `
+            <div class="unit-head" onclick="toggleUnit(${i})">
+              <span class="uh-type">${u.type || (u.beds + ' Bedroom')}</span>
+              <span class="uh-count">${u.units || 1} Unit${(u.units||1)>1?'s':''}</span>
+              <span class="uh-sqft">${u.sqft || ''} sqft</span>
+              <span class="uh-price">${u.price ? (p.currency||'AED')+' '+u.price : ''}</span>
+              <span class="uh-chevron" id="uc-${i}">▾</span>
+            </div>
+            <div class="unit-body" id="ub-${i}">
+              <div class="unit-cols">
+                <span class="unit-col-head">Plan</span>
+                <span class="unit-col-head">Type</span>
+                <span class="unit-col-head">Number</span>
+                <span class="unit-col-head">Area</span>
+                <span class="unit-col-head">Price</span>
+                <span class="unit-col-head">AED/sqft</span>
+                <div class="unit-data-row">
+                  <span><div class="unit-plan-box">Soon</div></span>
+                  <span>${u.type||''}</span>
+                  <span>${u.number || 'Nr '+(i+1)}</span>
+                  <span>${u.sqft||''} sqft</span>
+                  <span class="gprice">${u.price?(p.currency||'AED')+' '+u.price:''}</span>
+                  <span>${u.price_per_sqft||p.price_per_sqft||''}</span>
+                </div>
+              </div>
+            </div>`;
+          ul.appendChild(d);
+        });
+      } else { document.getElementById('units-sec').style.display = 'none'; }
+
+      // Details
+      const dtEl = document.getElementById('details-table');
+      const dtRows = [
+        ['Project Name', p.title],
+        ['Developer', p.developer],
+        ['Construction Status', p.construction_status],
+        ['Sale Status', p.status],
+        ['Unit Types', p.unit_types_label],
+        ['Branded Project?', p.branded !== undefined ? (p.branded ? 'Yes' : 'No') : null],
+        ['Added On', p.added_on],
+        ['Handover', p.handover],
+        ['Floors Formula', p.floors_formula],
+        ['Furnishing', p.furnishing],
+        ['Service Charge', p.service_charge],
+        ['Resale Conditions', p.resale_conditions ? p.resale_conditions + ' days' : null],
+        ['Payment Plan', p.payment_plan],
+        ['Beds', p.beds],
+        ['Baths', p.baths],
+        ['Area', p.sqft ? p.sqft + ' sqft' : null],
+        ['Price/sqft', p.price_per_sqft ? 'AED ' + p.price_per_sqft : null],
+      ];
+      dtRows.forEach(([l, v]) => {
+        if (!v && v !== 0) return;
+        dtEl.innerHTML += `<div class="dt-label">${l}</div><div class="dt-value"><b>${v}</b></div>`;
+      });
+
+      // Payment plan
+      if (p.payment_plan_breakdown && p.payment_plan_breakdown.length) {
+        const bar = document.getElementById('pp-bar');
+        const steps = document.getElementById('pp-steps');
+        p.payment_plan_breakdown.forEach((s, i) => {
+          const seg = document.createElement('div'); seg.className = 'pp-seg';
+          seg.style.width = s.percent + '%'; seg.style.background = PP_COLORS[i]||'#888';
+          bar.appendChild(seg);
+          steps.innerHTML += `<div class="pp-step"><div><div class="pp-label">${s.label}</div>${s.note?`<div class="pp-note">${s.note}</div>`:''}</div><div class="pp-pct">${s.percent}%</div></div>`;
+        });
+      } else { document.getElementById('pp-sec').style.display = 'none'; }
+
+      // Amenities
+      const atEl = document.getElementById('amen-tags');
+      const apEl = document.getElementById('amen-photos');
+      if (p.amenities && p.amenities.length) {
+        p.amenities.forEach(a => {
+          const t = document.createElement('span'); t.className = 'amenity-tag';
+          t.textContent = typeof a === 'string' ? a : (a.name || a);
+          atEl.appendChild(t);
+        });
+      }
+      if (p.amenity_images && p.amenity_images.length) {
+        p.amenity_images.forEach(a => {
+          apEl.innerHTML += `<div class="aph"><img src="${a.image}" alt="${a.name}" loading="lazy"><div class="aph-label">${a.name}</div></div>`;
+        });
+      }
+      if (!p.amenities?.length && !p.amenity_images?.length) document.getElementById('amen-sec').style.display = 'none';
+
+      // Map
+      document.getElementById('map-loc').textContent = p.location || '';
+      if (p.map_embed) document.getElementById('map-box').innerHTML = `<iframe src="${p.map_embed}" allowfullscreen loading="lazy"></iframe>`;
+      else if (p.location) {
+        const q = encodeURIComponent(p.location);
+        document.getElementById('map-box').innerHTML = `<iframe src="https://maps.google.com/maps?q=${q}&output=embed" allowfullscreen loading="lazy"></iframe>`;
+      }
+
+      // Documents
+      const docsEl = document.getElementById('docs-list');
+      if (p.floorplan_pdf) docsEl.innerHTML += `<a href="${p.floorplan_pdf}" class="doc-card" target="_blank"><div class="doc-icon">PDF</div><div><div class="doc-name">Floorplan / Factsheet</div><div class="doc-open">Open ↗</div></div></a>`;
+      if (p.brochure_url) docsEl.innerHTML += `<a href="${p.brochure_url}" class="doc-card" target="_blank"><div class="doc-icon">PDF</div><div><div class="doc-name">Brochure</div><div class="doc-open">Open ↗</div></div></a>`;
+      if (!p.floorplan_pdf && !p.brochure_url) document.getElementById('docs-sec').style.display = 'none';
+
+      // Features / parking
+      const fg = document.getElementById('feat-grid');
+      const feats = [...(p.parking||[]), ...(p.features||[])];
+      if (feats.length) {
+        feats.forEach(f => { const c = document.createElement('div'); c.className = 'feature-chip'; c.textContent = f; fg.appendChild(c); });
+      } else { document.getElementById('feat-sec').style.display = 'none'; }
+
+      // Recommended
+      const rg = document.getElementById('rec-grid');
+      all.filter(x => x.id !== p.id).slice(0, 4).forEach(r => {
+        rg.innerHTML += `
+          <a href="/property.html?id=${r.id}" class="rec-card">
+            <img class="rec-img" src="${r.image||'1.jpg'}" alt="${r.title||''}" loading="lazy">
+            <div class="rec-body">
+              <div class="rec-badges">
+                ${r.status?`<span class="rec-badge s">${r.status}</span>`:''}
+                ${(r.handover&&r.handover!=='Ready')?`<span class="rec-badge d">${r.handover}</span>`:''}
+              </div>
+              <div class="rec-title">${r.title||''}</div>
+              <div class="rec-dev">${r.developer||''} ${r.location?'• '+r.location.split(',')[0]:''}</div>
+              <div class="rec-foot">
+                <div><div class="rec-pl">Price from</div><div class="rec-price">${r.currency||'AED'} ${r.price||''}</div></div>
+                <div style="text-align:right"><div class="rec-pl">Payment plan</div><div class="rec-pplan">${r.payment_plan||''}</div></div>
+              </div>
+            </div>
+          </a>`;
+      });
+
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+
+    } catch (e) {
+      document.getElementById('loading').textContent = 'Error: ' + e.message;
+      console.error(e);
+    }
+  }
+
+  load();
 </script>
 </body>
 </html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Detail — AuroraPrime Dubai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#060b18;--navy-l:#0b1226;--gold:#C9A84C;--gold-l:#E8C96B;--gold-d:#956E1F;--cyan:#00D4FF;--neon:#00FFB3;--white:#fff;--gray:#8892A4;--mono:'Share Tech Mono',monospace;}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none;min-height:100vh}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:linear-gradient(to bottom,var(--gold-d),var(--cyan));border-radius:2px}
+body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.02) 2px,rgba(0,0,0,0.02) 4px)}
+#cur-dot,#cur-ring{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%)}
+#cur-dot{width:6px;height:6px;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+#cur-ring{width:30px;height:30px;border:1px solid rgba(0,212,255,.5)}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 4rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(28px);background:rgba(6,11,24,.9);border-bottom:1px solid rgba(201,168,76,.15)}
+nav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.4),rgba(0,212,255,.3),transparent)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.06em}
+.nav-logo span{color:var(--white)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--gray);text-decoration:none;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;transition:color .3s;cursor:none}
+.nav-links a:hover{color:var(--cyan)}
+.nav-cta{background:transparent;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.1rem;border-radius:2px;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;cursor:none;transition:all .3s}
+.nav-cta:hover{background:var(--cyan);color:var(--navy)}
+/* HERO IMAGE */
+.hero-img{position:relative;height:65vh;min-height:420px;overflow:hidden;margin-top:70px}
+.hero-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(1.1)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,11,24,.95) 0%,rgba(6,11,24,.3) 50%,rgba(6,11,24,.4) 100%)}
+.hero-img::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,212,255,.01) 3px,rgba(0,212,255,.01) 4px);pointer-events:none}
+.hero-badges{position:absolute;top:2rem;left:2rem;display:flex;gap:.6rem;z-index:2}
+.hero-back{position:absolute;top:2rem;right:2rem;z-index:2;font-family:var(--mono);font-size:.65rem;color:var(--white);text-decoration:none;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.15);padding:.4rem .9rem;border-radius:2px;backdrop-filter:blur(8px);transition:all .3s;cursor:none;display:flex;align-items:center;gap:.4rem}
+.hero-back:hover{border-color:var(--cyan);color:var(--cyan)}
+.hero-content{position:absolute;bottom:2rem;left:2rem;right:2rem;z-index:2}
+.hero-price{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--gold);line-height:1;text-shadow:0 0 30px rgba(201,168,76,.3)}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;margin:.3rem 0}
+.hero-loc{font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.6);letter-spacing:.12em;display:flex;align-items:center;gap:.4rem}
+/* BADGE */
+.badge{font-family:var(--mono);font-size:.56rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.26rem .8rem;border-radius:3px}
+.badge-eoi{background:rgba(0,212,255,.15);color:var(--cyan);border:1px solid rgba(0,212,255,.4)}
+.badge-sale{background:rgba(0,255,179,.1);color:var(--neon);border:1px solid rgba(0,255,179,.3)}
+.badge-ready{background:rgba(0,255,179,.1);color:var(--neon);border:1px solid rgba(0,255,179,.3)}
+.badge-gold{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
+/* LAYOUT */
+.detail-layout{display:grid;grid-template-columns:1fr 360px;gap:2.5rem;padding:2.5rem 4rem 5rem;max-width:1400px;margin:0 auto}
+/* LEFT CONTENT */
+.content-section{margin-bottom:2.5rem}
+.section-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.28em;color:var(--cyan);text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.section-label::before{content:'';width:18px;height:1px;background:var(--cyan)}
+/* KEY FACTS */
+.key-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1.5rem;background:rgba(0,212,255,.03);border:1px solid rgba(0,212,255,.1);border-radius:4px}
+.key-fact{text-align:center}
+.key-fact-val{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--gold);display:block;line-height:1}
+.key-fact-lbl{font-family:var(--mono);font-size:.55rem;color:var(--gray);letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem}
+/* DESCRIPTION */
+.description{color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.95}
+/* UNIT TYPES TABLE */
+.units-table{width:100%;border-collapse:collapse}
+.units-table th{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;color:var(--cyan);text-transform:uppercase;padding:.7rem 1rem;border-bottom:1px solid rgba(0,212,255,.15);text-align:left;background:rgba(0,212,255,.03)}
+.units-table td{padding:.85rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);font-size:.84rem;color:var(--white)}
+.units-table tr:hover td{background:rgba(0,212,255,.03)}
+.units-table .price-cell{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold)}
+/* AMENITIES */
+.amenities-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+.amenity{display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;background:rgba(0,212,255,.03);border:1px solid rgba(0,212,255,.08);border-radius:3px;font-size:.82rem;color:var(--gray);transition:all .3s}
+.amenity:hover{border-color:rgba(0,212,255,.25);color:var(--white)}
+.amenity::before{content:'◈';color:var(--cyan);font-size:.55rem;flex-shrink:0}
+/* PDF */
+.pdf-link{display:inline-flex;align-items:center;gap:.8rem;padding:1rem 1.5rem;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.25);border-radius:4px;color:var(--gold);text-decoration:none;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;cursor:none}
+.pdf-link:hover{background:rgba(201,168,76,.12);border-color:var(--gold)}
+.pdf-icon{width:36px;height:36px;background:rgba(201,168,76,.15);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+/* SIDEBAR */
+.sidebar{position:sticky;top:90px;height:fit-content}
+.sidebar-card{background:rgba(2,8,20,.8);border:1px solid rgba(0,212,255,.15);border-radius:6px;padding:1.8rem;margin-bottom:1.2rem;position:relative}
+.sidebar-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(0,212,255,.3),transparent)}
+.sidebar-price{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold);text-shadow:0 0 20px rgba(201,168,76,.25);margin-bottom:.2rem}
+.sidebar-price-label{font-family:var(--mono);font-size:.52rem;color:var(--gray);letter-spacing:.12em;margin-bottom:1.2rem}
+.sidebar-row{display:flex;justify-content:space-between;align-items:center;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.sidebar-row:last-child{border-bottom:none}
+.sidebar-row-label{font-family:var(--mono);font-size:.6rem;color:var(--gray);letter-spacing:.1em}
+.sidebar-row-val{font-family:var(--mono);font-size:.65rem;color:var(--white);letter-spacing:.08em}
+.sidebar-row-val.gold{color:var(--gold)}
+.sidebar-row-val.cyan{color:var(--cyan)}
+/* CTAs */
+.cta-btn{width:100%;padding:.95rem;border:none;border-radius:4px;font-family:var(--mono);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:none;transition:all .3s;margin-bottom:.7rem;display:flex;align-items:center;justify-content:center;gap:.6rem}
+.cta-primary{background:linear-gradient(135deg,var(--gold-d),var(--gold));color:var(--navy)}
+.cta-primary:hover{box-shadow:0 0 20px rgba(201,168,76,.4)}
+.cta-secondary{background:transparent;color:var(--cyan);border:1px solid rgba(0,212,255,.35)}
+.cta-secondary:hover{background:rgba(0,212,255,.06);border-color:var(--cyan)}
+.cta-note{font-family:var(--mono);font-size:.55rem;color:var(--gray);text-align:center;letter-spacing:.08em;opacity:.6;margin-top:.5rem}
+/* LOADING */
+.loading{text-align:center;padding:8rem 2rem;color:var(--gray)}
+.loading h2{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:.5rem}
+/* FOOTER */
+footer{background:#020508;padding:2rem 4rem;border-top:1px solid rgba(0,212,255,.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer p{color:var(--gray);font-family:var(--mono);font-size:.65rem;letter-spacing:.08em}
+footer span{color:var(--cyan)}
+@media(max-width:1024px){.detail-layout{grid-template-columns:1fr}.sidebar{position:static}.key-facts{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){nav{padding:.85rem 1.5rem}.nav-links{display:none}.detail-layout{padding:1.5rem 1.5rem 4rem}.amenities-grid{grid-template-columns:1fr}.key-facts{grid-template-columns:repeat(2,1fr)}footer{padding:1.5rem}}
+</style>
+</head>
+<body>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Aurora<span>Prime</span></a>
+  <ul class="nav-links">
+    <li><a href="properties.html">Properties</a></li>
+    <li><a href="index.html#how">Process</a></li>
+    <li><a href="index.html#testimonials">Clients</a></li>
+    <li><a href="index.html#cta">Contact</a></li>
+  </ul>
+  <button class="nav-cta">[ LIST PROPERTY ]</button>
+</nav>
+
+<div id="page-content"><div class="loading"><h2>Loading Property…</h2><p>Fetching data…</p></div></div>
+
+<footer>
+  <p>© 2024 <span>AURORAPRIME</span>. ALL RIGHTS RESERVED.</p>
+  <p>CRAFTED FOR DISTINCTION <span>◈</span> BUILT FOR THE EXTRAORDINARY</p>
+</footer>
+
+<script>
+/* CURSOR */
+const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+let rx=0,ry=0;
+document.addEventListener('mousemove',e=>{dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px';});
+(function loop(){requestAnimationFrame(loop);rx+=(parseFloat(dot.style.left||0)-rx)*.12;ry+=(parseFloat(dot.style.top||0)-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';})();
+
+function badgeClass(status){
+  const m={'EOI':'badge-eoi','On Sale':'badge-sale','Ready':'badge-ready','Coming Soon':'badge-gold','Sold Out':'badge-gold'};
+  return m[status]||'badge-gold';
+}
+
+function badgeClass2(badge){return badge==='For Sale'?'badge-sale':'badge-gold';}
+
+async function init(){
+  const params=new URLSearchParams(window.location.search);
+  const id=params.get('id');
+  if(!id){document.getElementById('page-content').innerHTML='<div class="loading"><h2>No Property Selected</h2><p><a href="properties.html" style="color:var(--cyan)">← Back to Properties</a></p></div>';return;}
+
+  let props=[];
+  try{
+    const r=await fetch('/_data/properties.json');
+    if(r.ok){const d=await r.json();if(d.properties)props=d.properties;}
+  }catch(e){}
+
+  const p=props.find(x=>x.id===id);
+  if(!p){document.getElementById('page-content').innerHTML='<div class="loading"><h2>Property Not Found</h2><p><a href="properties.html" style="color:var(--cyan)">← Back to Properties</a></p></div>';return;}
+
+  document.title=p.title+' — AuroraPrime Dubai';
+
+  const amenitiesHTML=(p.amenities||[]).map(a=>`<div class="amenity">${a}</div>`).join('');
+  const unitsHTML=p.unit_types&&p.unit_types.length?`
+    <table class="units-table">
+      <thead><tr><th>Type</th><th>Beds</th><th>Sqft</th><th>Price (AED)</th></tr></thead>
+      <tbody>${p.unit_types.map(u=>`<tr><td>${u.type}</td><td>${u.beds||'—'}</td><td>${u.sqft}</td><td class="price-cell">${u.price}</td></tr>`).join('')}</tbody>
+    </table>`:'<p style="color:var(--gray);font-size:.85rem">Unit details coming soon.</p>';
+
+  const pdfHTML=p.floorplan_pdf?`
+    <a href="${p.floorplan_pdf}" target="_blank" class="pdf-link">
+      <div class="pdf-icon">📄</div>
+      <span>DOWNLOAD FLOOR PLAN PDF</span>
+    </a>`:'<p style="color:var(--gray);font-size:.82rem;font-family:var(--mono)">Floor plan available on request.</p>';
+
+  document.getElementById('page-content').innerHTML=`
+    <!-- HERO -->
+    <div class="hero-img">
+      <img src="${p.image||'1.jpg'}" alt="${p.title}">
+      <div class="hero-overlay"></div>
+      <div class="hero-badges">
+        <span class="badge ${badgeClass(p.status)}">${p.status}</span>
+        ${p.handover&&p.handover!=='Ready'?`<span class="badge badge-gold">${p.handover}</span>`:''}
+        <span class="badge ${badgeClass2(p.badge)}">${p.badge}</span>
+      </div>
+      <a href="properties.html" class="hero-back">← ALL PROPERTIES</a>
+      <div class="hero-content">
+        <div class="hero-price">AED ${p.price}</div>
+        <div class="hero-name">${p.title}</div>
+        <div class="hero-loc">
+          <svg width="9" height="11" viewBox="0 0 10 12" fill="var(--cyan)"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 7 5 7s5-3.25 5-7c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
+          ${p.location}
+        </div>
+      </div>
+    </div>
+
+    <!-- DETAIL LAYOUT -->
+    <div class="detail-layout">
+      <!-- LEFT -->
+      <div>
+        <!-- KEY FACTS -->
+        <div class="content-section">
+          <div class="key-facts">
+            <div class="key-fact"><span class="key-fact-val">${p.beds}</span><div class="key-fact-lbl">Bedrooms</div></div>
+            <div class="key-fact"><span class="key-fact-val">${p.baths}</span><div class="key-fact-lbl">Bathrooms</div></div>
+            <div class="key-fact"><span class="key-fact-val">${p.sqft}</span><div class="key-fact-lbl">Sq Feet</div></div>
+            <div class="key-fact"><span class="key-fact-val" style="font-size:1.2rem">${p.handover}</span><div class="key-fact-lbl">Handover</div></div>
+          </div>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="content-section">
+          <div class="section-label">// ABOUT THIS PROPERTY</div>
+          <p class="description">${p.description||'Full description coming soon.'}</p>
+        </div>
+
+        <!-- UNIT TYPES -->
+        <div class="content-section">
+          <div class="section-label">// UNITS & AVAILABILITY</div>
+          ${unitsHTML}
+        </div>
+
+        <!-- AMENITIES -->
+        ${p.amenities&&p.amenities.length?`
+        <div class="content-section">
+          <div class="section-label">// FEATURES & AMENITIES</div>
+          <div class="amenities-grid">${amenitiesHTML}</div>
+        </div>`:''}
+
+        <!-- FLOOR PLAN -->
+        <div class="content-section">
+          <div class="section-label">// FLOOR PLAN</div>
+          ${pdfHTML}
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-price">AED ${p.price}</div>
+          <div class="sidebar-price-label">PRICE FROM · ${p.currency}</div>
+          <div class="sidebar-row"><span class="sidebar-row-label">DEVELOPER</span><span class="sidebar-row-val">${p.developer}</span></div>
+          <div class="sidebar-row"><span class="sidebar-row-label">LOCATION</span><span class="sidebar-row-val">${p.location}</span></div>
+          <div class="sidebar-row"><span class="sidebar-row-label">PAYMENT PLAN</span><span class="sidebar-row-val gold">${p.payment_plan}</span></div>
+          <div class="sidebar-row"><span class="sidebar-row-label">HANDOVER</span><span class="sidebar-row-val cyan">${p.handover}</span></div>
+          <div class="sidebar-row"><span class="sidebar-row-label">STATUS</span><span class="sidebar-row-val">${p.status}</span></div>
+          ${p.price_per_sqft?`<div class="sidebar-row"><span class="sidebar-row-label">PRICE / SQFT</span><span class="sidebar-row-val">AED ${p.price_per_sqft}</span></div>`:''}
+        </div>
+
+        <button class="cta-btn cta-primary">◈ SCHEDULE PRIVATE TOUR</button>
+        <button class="cta-btn cta-secondary">⤓ REQUEST BROCHURE</button>
+        <div class="cta-note">★ COMPLIMENTARY CONSULTATION · ABSOLUTE DISCRETION</div>
+      </div>
+    </div>
+  `;
+}
+init();
+</script>
+</body>
+</html>
